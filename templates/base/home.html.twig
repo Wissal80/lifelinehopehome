@@ -1,0 +1,32 @@
+{% block body %}
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 wow fadeIn" data-wow-delay="0.1s">
+        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+            <h1 class="m-0 text-primary"></i>LifeLineHope</h1>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="/home" class="nav-item nav-link active">Home</a>
+                <a href="/about" class="nav-item nav-link">About</a>
+                <a href="/contact" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="" class="btn btn-primary rounded-0 py-4 px-lg-5 d-none d-lg-block">Login<i class="fa fa-arrow-right ms-3"></i></a>
+        </div>
+    </nav>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img class="d-block w-100 home-bg" alt="home-bg" src="{{ asset('img/bckground.jpg') }}">
+            <div class="carousel-caption d-md-block">
+                <h5>LifeLineHope Welcomes You</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ajout du bouton de Sign Up -->
+    <div class="text-center mt-4">
+        <a href="/signup" class="btn btn-primary btn-lg">Sign Up</a>
+    </div>
+{% endblock %}
