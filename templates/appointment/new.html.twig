@@ -1,0 +1,85 @@
+{% block body %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>New Appointment</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                border: 1px solid blue;
+                padding: 8px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            .error-message {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Create new Appointment</h1>
+        
+        {# Display global form errors if any #}
+        {% if form_errors(form) %}
+            <div class="error-message">
+                {{ form_errors(form) }}
+            </div>
+        {% endif %}
+        
+        <form method="post">
+            <table>
+                <tr>
+                    <th>Date of Appointment</th>
+                    <th>Time of Appointment</th>
+                    <th>Owner's Name</th>
+                </tr>
+                <tr>
+                    <td>
+                        {{ form_row(form.date) }}
+                        {# Render errors for the 'date' field if any #}
+                        {% if form_errors(form.date) %}
+                            <div class="error-message">
+                                {{ form_errors(form.date) }}
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ form_row(form.hourOfAppointment) }}
+                        {# Render errors for the 'hourOfAppointment' field if any #}
+                        {% if form_errors(form.hourOfAppointment) %}
+                            <div class="error-message">
+                                {{ form_errors(form.hourOfAppointment) }}
+                            </div>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ form_row(form.nameOwner) }}
+                        {# Render errors for the 'nameOwner' field if any #}
+                        {% if form_errors(form.nameOwner) %}
+                            <div class="error-message">
+                                {{ form_errors(form.nameOwner) }}
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+
+            <button type="submit">{{ button_label|default('Save') }}</button>
+        </form>
+
+        <a href="{{ path('app_appointment_index') }}">back to list</a>
+    </body>
+    </html>
+{% endblock %}

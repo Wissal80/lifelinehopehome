@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medications index</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            border-spacing: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        .table th, .table td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .table td {
+            color: #666;
+        }
+
+        .table tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .actions a {
+            margin-right: 5px;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .actions a:hover {
+            text-decoration: underline;
+        }
+
+        .no-records {
+            text-align: center;
+            font-style: italic;
+            color: #999;
+        }
+
+        .create-new {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .create-new a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .create-new a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Medications Index</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Description</th>
+                    <th>Name of Medications</th>
+                    <th>Dosage</th>
+                    <th>Medical Notes</th>
+                    <th class="actions">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for medication in medications %}
+                    <tr>
+                        <td>{{ medication.id }}</td>
+                        <td>{{ medication.Description }}</td>
+                        <td>{{ medication.NameMedications }}</td>
+                        <td>{{ medication.Dosage }}</td>
+                        <td>{{ medication.MedicalNotes }}</td>
+                        <td class="actions">
+                            <a href="{{ path('app_medications_show', {'id': medication.id}) }}">Show</a>
+                            <a href="{{ path('app_medications_edit', {'id': medication.id}) }}">Edit</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="no-records">No records found</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="create-new">
+            <a href="{{ path('app_medications_new') }}">Create new</a>
+        </div>
+    </div>
+</body>
+</html>

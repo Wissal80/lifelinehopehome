@@ -1,0 +1,76 @@
+
+{% extends 'base-front.html.twig' %}
+
+{% block body %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>New Medications</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            th, td {
+                border: 1px solid blue;
+                padding: 8px;
+                text-align: left;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+
+            tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Create new Medications</h1>
+        
+        <form method="post">
+            <table>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ form_widget(form.Description) }}</td>
+                    <td>{{ form_errors(form.Description) }}</td>
+                </tr>
+                <tr>
+                    <th>Name of Medications</th>
+                    <td>{{ form_widget(form.NameMedications) }}</td>
+                    <td>{{ form_errors(form.NameMedications) }}</td>
+                </tr>
+               
+                <tr>
+                    <th>Medical Notes</th>
+                    <td>{{ form_widget(form.MedicalNotes) }}</td>
+                    <td>{{ form_errors(form.MedicalNotes) }}</td>
+                </tr>
+
+
+                <tr>
+                    <th>Dosage</th>
+                    <td>
+                        {{ form_widget(form.dosage) }}
+                        {# Render errors for the 'Dosage' field if any #}
+                        {% if form_errors(form.dosage) %}
+                            <div class="error-message">
+                                {{ form_errors(form.dosage) }}
+                            </div>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                   
+                <!-- Add more fields as needed -->
+            </table>
+
+            <button type="submit">Save</button>
+        </form>
+
+        <a href="{{ path('app_medications_index') }}">back to list</a>
+    </body>
+    </html>
+{% endblock %}

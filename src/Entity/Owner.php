@@ -21,9 +21,12 @@ class Owner
     #[ORM\Column(length: 255)]
     private ?string $Surname = null;
 
-    #[ORM\OneToMany(targetEntity: Appointment::class, mappedBy: 'owner')]
+   
     private Collection $Appointment;
 
+    
+    private ?Medications $medications = null;
+    
     public function __construct()
     {
         $this->Appointment = new ArrayCollection();
@@ -84,6 +87,18 @@ class Owner
                 $appointment->setOwner(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMedications(): ?Medications
+    {
+        return $this->Medications;
+    }
+
+    public function setMedications(?Medications $Medications): static
+    {
+        $this->Medications = $Medications;
 
         return $this;
     }

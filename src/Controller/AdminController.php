@@ -23,6 +23,16 @@ class AdminController extends AbstractController
         
         return $this->render('base-back.html.twig');
     }
+    #[Route('/User', name: 'app_user')]
+    public function listUsers(): Response
+    {
+        // Récupérer tous les utilisateurs depuis la base de données
+        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+
+        // Passer les utilisateurs récupérés à la vue
+        return $this->render('listusers.html.twig'
+        );
+    }
     
 
 

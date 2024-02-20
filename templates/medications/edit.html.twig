@@ -1,0 +1,25 @@
+{% block body %}
+    <h1>Edit Medications</h1>
+
+    {{ include('medications/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <style>
+        /* Styles pour le bouton "Update" */
+        .update-button {
+            background-color: #28a745; /* Couleur de fond verte */
+            color: #fff; /* Couleur du texte blanc */
+            border: none; /* Supprime la bordure */
+            padding: 10px 20px; /* Ajoute un espacement interne */
+            border-radius: 5px; /* Ajoute un arrondi aux coins */
+            cursor: pointer; /* Change le curseur au survol */
+        }
+
+        .update-button:hover {
+            background-color: #218838; /* Couleur de fond légèrement plus foncée au survol */
+        }
+    </style>
+
+    <a href="{{ path('app_medications_index') }}">back to list</a>
+
+    {{ include('medications/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<title>Medications</title>
+
+{% block body %}
+    <h1>Medications</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ medication.id }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ medication.Description }}</td>
+            </tr>
+            <tr>
+                <th>NameMedications</th>
+                <td>{{ medication.NameMedications }}</td>
+            </tr>
+            
+            <tr>
+                <th>MedicalNotes</th>
+                <td>{{ medication.MedicalNotes }}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_medications_index') }}">back to list</a>
+
+    <a href="{{ path('app_medications_edit', {'id': medication.id}) }}">edit</a>
+
+    {{ include('medications/_delete_form.html.twig') }}
+{% endblock %}

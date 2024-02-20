@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<title>Appointment</title>
+
+{% block body %}
+    <h1>Appointment</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ appointment.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ appointment.Date ? appointment.Date|date('Y-m-d') : '' }}</td>
+
+
+            </tr>
+            <tr>
+                <th>HourOfAppointment</th>
+                <td>{{ appointment.HourOfAppointment ? appointment.HourOfAppointment|date('H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_appointment_index') }}">back to list</a>
+
+    <a href="{{ path('app_appointment_edit', {'id': appointment.id}) }}">edit</a>
+
+    {{ include('appointment/_delete_form.html.twig') }}
+{% endblock %}
